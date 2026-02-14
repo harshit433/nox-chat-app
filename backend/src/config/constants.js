@@ -1,17 +1,17 @@
 /**
- * Application constants and configuration
+ * Application constants
  */
 
-export const PORT = process.env.PORT || 4000;
-export const JWT_SECRET = process.env.JWT_SECRET || 'nox-chat-secret-key-change-in-production';
-export const STORAGE_PATH = process.env.STORAGE_PATH || './data';
+import { env } from './env.js';
+
+export const PORT = env.PORT;
+export const JWT_SECRET = env.JWT_SECRET;
 
 /**
- * Hardcoded credentials for allowed sign-in (development/demo)
- * In production, replace with proper database and hashed passwords
+ * Hardcoded credentials seeded into DB for development/demo
  */
 export const HARDCODED_USERS = [
-  { id: 'user-1', email: 'admin@nox.ai', password: 'admin123' },
-  { id: 'user-2', email: 'demo@nox.ai', password: 'demo123' },
-  { id: 'user-3', email: 'test@nox.ai', password: 'test123' },
+  { email: 'admin@nox.ai', password: 'admin123' },
+  { email: 'demo@nox.ai', password: 'demo123' },
+  { email: 'test@nox.ai', password: 'test123' },
 ];

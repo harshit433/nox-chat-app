@@ -25,12 +25,10 @@ router.post('/signup', async (req, res) => {
       return res.status(409).json({ error: 'Email already registered' });
     }
 
-    const user = {
-      id: `user-${Date.now()}`,
+    const user = await saveUser({
       email: email.trim().toLowerCase(),
-      password, // In production: hash with bcrypt
-    };
-    await saveUser(user);
+      password,
+    });
 
     const token = jwt.sign(
       { userId: user.id, email: user.email },
